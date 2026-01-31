@@ -3,504 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Min Htet Thar - Premium Order</title>
+<head>
+  <meta charset="UTF-8">
+  <title>My Page</title>
 
-<title>Min Htet Thar - Order Form</title>
-
-<meta property="og:title" content="Min Htet Thar - သဘာဝဆေးမြစ်စိမ်ဆေး">
-<meta property="og:description" content="အမျိုးသားများအတွက် သဘာဝဆေးမြစ်စိမ်ဆေး။ အိမ်တိုင်ရာရောက် ပို့ဆောင်ပေးပါသည်။ Order တင်ရန် နှိပ်ပါ။">
-<meta property="og:image" content="./banner.jpg">
-<meta property="og:type" content="website">
-
+  <style>
+    .footer {
+      text-align: center;
+      padding: 15px 10px;
+    }
+  </style>
+</head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+/* --- 1. THEME & COLORS --- */
 :root {
-    --primary-color: #0a2540;
-    --secondary-color: #1e3c72;
-    --accent-color: #ff9800;
-    --text-color: #333;
-    --light-bg: #f4f7f9;
+    --primary: #0f2027;       /* Dark Blue */
+    --secondary: #203a43;     
+    --price-color: #d32f2f;   /* အနီရောင် (စျေးနှုန်းအတွက်) */
+    --btn-gradient: linear-gradient(135deg, #ff6b00, #ffb300); /* ဝယ်ယူရန် ခလုတ် (လိမ္မော်/ရွှေ) */
+    --bg: #f4f6f8;            
     --white: #ffffff;
-    --success: #28a745;
+    --text: #333333;
 }
 
 * { box-sizing: border-box; }
+body { margin: 0; font-family: 'Padauk', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 90px; }
 
-body {
-    margin: 0;
-    font-family: 'Padauk', sans-serif;
-    background: var(--light-bg);
-    color: var(--text-color);
-    line-height: 1.6;
-    padding-bottom: 50px;
-}
-
+/* --- 2. HEADER --- */
 header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    padding: 40px 20px;
-    text-align: center;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(to right, #141e30, #243b55);
+    color: var(--white); padding: 30px 20px 50px; text-align: center;
+    border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.logo { 
+    width: 100px; height: 100px; background: var(--white); border-radius: 50%; 
+    margin: 0 auto 10px; padding: 4px; box-shadow: 0 0 15px rgba(255,255,255,0.2); 
+}
+.logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+/* --- 3. LAYOUT --- */
+.container { max-width: 700px; margin: -40px auto 0; padding: 0 15px; position: relative; z-index: 10; }
+
+.card { 
+    background: var(--white); border-radius: 15px; padding: 20px; margin-bottom: 20px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02);
+}
+.section-title { 
+    text-align: center; font-size: 1.2rem; font-weight: bold; color: var(--secondary); 
+    margin-bottom: 20px; border-bottom: 2px dashed #eee; padding-bottom: 10px;
 }
 
-.header-logo {
-    width: 110px;
-    height: 110px;
-    background-color: var(--white);
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    padding: 5px;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(255,255,255,0.5);
-}
-.header-logo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+/* --- 4. PRODUCT DESIGN (UPDATED) --- */
+.product-stack { display: flex; flex-direction: column; gap: 20px; }
 
-.container {
-    max-width: 900px;
-    margin: -30px auto 20px;
-    padding: 0 15px;
+.product-item { 
+    background: #fff; border-radius: 15px; overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 1px solid #eee;
 }
 
-.section {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+.p-img-box { 
+    height: 250px; background: #f0f0f0; position: relative; 
+}
+/* ပုံများကို အလယ်တည့်တည့်နှင့် အပြည့်ပေါ်စေရန် */
+.p-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.badge-year {
+    position: absolute; top: 15px; left: 15px; 
+    background: #ffb300; color: #000; font-weight: bold; 
+    padding: 5px 15px; border-radius: 30px; font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.section-title {
-    text-align: center; font-size: 1.4em; color: var(--primary-color);
-    margin-bottom: 20px; font-weight: bold;
-    border-bottom: 2px dashed #eee; padding-bottom: 10px;
+.p-details { padding: 20px; text-align: center; }
+
+/* စျေးနှုန်း ဒီဇိုင်း အသစ် */
+.price-box {
+    margin: 10px 0 15px;
+}
+.price-label { font-size: 0.9rem; color: #666; display: block; margin-bottom: 5px; }
+.price-amount { 
+    font-size: 1.6rem; color: var(--price-color); font-weight: bold; 
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1); letter-spacing: 0.5px;
 }
 
-/* Product Grid */
-.product-grid { display: grid; gap: 15px; }
-@media (min-width:600px){ .product-grid{grid-template-columns:repeat(3,1fr);} .country-grid{grid-template-columns:repeat(3,1fr);} }
-
-.product-card { border:1px solid #eee; border-radius:15px; overflow:hidden; }
-.product-img-box{ height:200px; }
-.product-img-box img{ width:100%; height:100%; object-fit:cover; }
-.product-info{ padding:10px; text-align:center; }
-.price-tag{ background:var(--accent-color); color:white; padding:6px 15px; border-radius:20px; display:inline-block; margin-top:8px; }
-
-/* Usage & Highlight */
-.usage { list-style: none; padding: 0; }
-.usage li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-.usage li::before { content: '✔'; position: absolute; left: 0; color: var(--success); }
-
-.highlight {
-    background: #e3f2fd; padding: 15px; border-radius: 12px;
-    text-align: center; font-weight: bold; color: var(--secondary-color);
-    margin-bottom: 25px; border: 1px solid #bbdefb;
+/* ဝယ်ယူရန် ခလုတ် ဒီဇိုင်း အသစ် */
+.buy-btn {
+    background: var(--btn-gradient); 
+    color: white; width: 100%; padding: 14px;
+    border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold;
+    cursor: pointer; box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+    font-family: 'Padauk', sans-serif; transition: transform 0.1s;
 }
+.buy-btn:active { transform: scale(0.97); opacity: 0.9; }
 
-/* Country Flags Display */
-.country-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; text-align: center; }
-.country-item{ background:#f4f4f4; padding:10px; border-radius:10px; font-size: 0.9em; }
+/* --- 5. OTHER SECTIONS --- */
+.usage-list li { padding: 10px 0; border-bottom: 1px dashed #eee; display: flex; gap: 10px; }
+.usage-list i { color: #28a745; margin-top: 5px; }
 
-/* Form Inputs */
-.form-group { margin-bottom: 15px; }
-.form-label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.95em; color: #555; }
-.form-control {
-    width: 100%; padding: 14px; border: 1px solid #ddd;
-    border-radius: 12px; font-family: 'Padauk', sans-serif;
-    font-size: 1rem; outline: none; background: #fafafa;
-    transition: 0.3s;
+.country-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.c-item { background: #f8f9fa; padding: 10px; border-radius: 8px; text-align: center; border: 1px solid #eee; font-size: 0.9rem; }
+
+/* Form & Inputs */
+.form-control { 
+    width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; 
+    font-family: 'Padauk', sans-serif; font-size: 1rem; outline: none; background: #fafafa;
 }
-.form-control:focus { border-color: var(--accent-color); background: #fff; box-shadow: 0 0 8px rgba(255, 152, 0, 0.2); }
+.form-control:focus { border-color: #ffb300; background: #fff; }
 
-/* Payment Section */
-.payments{ display:grid; grid-template-columns:1fr; gap:15px; }
-.pay{
-    border:1px solid #eee; border-radius:15px; padding:15px;
-    display: flex; align-items: center; justify-content: space-between;
+/* Payment Logos */
+.pay-row { 
+    display: flex; align-items: center; justify-content: space-between; 
+    background: #fff; padding: 12px; border-radius: 12px; margin-bottom: 10px; 
+    border: 1px solid #eee;
 }
-.pay-left { display: flex; align-items: center; gap: 15px; }
-.pay-logo-box{ width:50px; height: 50px; }
-.pay-logo-box img{ width: 100%; height: 100%; object-fit: contain; }
-.pay-details b { display: block; color: #333; }
-.pay-details span { color: var(--primary-color); font-size: 1.1em; letter-spacing: 0.5px; }
-.copy-btn-small {
-    background: var(--secondary-color); color: white; border: none;
-    padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8em;
+.pay-icon { width: 45px; height: 45px; object-fit: contain; border-radius: 8px; }
+
+/* Action Buttons */
+.big-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 15px; border-radius: 50px; color: white; 
+    border: none; cursor: pointer; font-size: 1.1rem; font-weight: bold;
+    font-family: 'Padauk', sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 10px; text-decoration: none;
 }
-
-/* Buttons & Warning */
-.contact-card{ max-width: 500px; margin: 0 auto; text-align: center; }
-.instruction-box {
-    background: #fff3cd; color: #856404;
-    border: 1px solid #ffeeba; border-radius: 10px;
-    padding: 15px; margin-bottom: 20px; font-size: 0.95em;
-}
-
-.big-btn{
-  display:flex; align-items:center; justify-content:center; gap:12px;
-  padding:16px; margin-bottom:14px; border-radius:50px;
-  color:#fff; font-size:18px; font-weight:bold; text-decoration:none;
-  cursor: pointer; border: none; width: 100%; font-family: 'Padauk', sans-serif;
-  transition: transform 0.1s;
-}
-.big-btn:active { transform: scale(0.98); }
-
-.viber{background:#7360f2;}
-.telegram{background:#2aa7df;}
-.whatsapp{background:#25d366;}
-.messenger{background:#0084ff;}
-.big-btn i{ font-size:24px; }
-
-footer{ text-align:center; padding:20px; color:#777; font-size: 0.9em; }
+.bg-viber { background: #7360f2; }
+.bg-tele { background: #2aa7df; }
+.bg-wa { background: #25d366; }
+.bg-msg { background: #0084ff; }
 
 /* Toast */
 #toast {
-    visibility: hidden; min-width: 250px; background-color: #333; color: #fff;
-    text-align: center; border-radius: 30px; padding: 16px; position: fixed;
-    z-index: 99; left: 50%; transform: translateX(-50%); bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-size: 0.95rem;
+    visibility: hidden; min-width: 280px; margin-left: -140px; background-color: #333; color: #fff;
+    text-align: center; border-radius: 50px; padding: 16px; position: fixed; z-index: 100;
+    left: 50%; bottom: 40px; font-size: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 40px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 40px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
-
+html { scroll-behavior: smooth; }
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="header-logo">
-        <img src="./logo.png" alt="Logo">
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
     </div>
-    <h1>MIN HTET THAR</h1>
+    <h2>MIN HTET THAR</h2>
     <p>အမျိုးသားများအတွက် သဘာဝဆေးမြစ်စိမ်ဆေး</p>
 </header>
 
 <div class="container">
 
-    <div class="section">
+    <div class="card">
         <div class="section-title">ရရှိနိုင်သော ဆေးအမျိုးအစားများ</div>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-img-box"><img src="./product1.jpg" alt="1 Year"></div>
-                <div class="product-info">
-                    <h3>၁ နှစ်စိမ်</h3>
-                    <span>သာမန်အားဖြည့်ရန်</span><br>
-                    <div class="price-tag">၁၉၀,၀၀၀ ကျပ်</div>
+        
+        <div class="product-stack">
+            <div class="product-item">
+                <div class="p-img-box">
+                    <span class="badge-year">1 YEAR</span>
+                    <img src="product1.jpg" alt="1 Year">
+                </div>
+                <div class="p-details">
+                    <h3 style="margin:0; color:var(--primary);">၁ နှစ်စိမ်</h3>
+                    <p style="color:#666; font-size:0.9rem;">သာမန်အားဖြည့်ရန်</p>
+                    
+                    <div class="price-box">
+                        <span class="price-amount">၁၉၀,၀၀၀ ကျပ်</span>
+                    </div>
+
+                    <button class="buy-btn" onclick="autoSelect('1year')">
+                         ဝယ်ယူရန် <i class="fas fa-shopping-cart"></i>
+                    </button>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="product-img-box"><img src="./product2.jpg" alt="2 Years"></div>
-                <div class="product-info">
-                    <h3>၂ နှစ်စိမ်</h3>
-                    <span>ပိုမိုထိရောက်မှုရှိ</span><br>
-                    <div class="price-tag">၂၉၀,၀၀၀ ကျပ်</div>
+
+            <div class="product-item">
+                <div class="p-img-box">
+                    <span class="badge-year">2 YEARS</span>
+                    <img src="product2.jpg" alt="2 Years">
+                </div>
+                <div class="p-details">
+                    <h3 style="margin:0; color:var(--primary);">၂ နှစ်စိမ်</h3>
+                    <p style="color:#666; font-size:0.9rem;">ပိုမိုထိရောက်မှုရှိ</p>
+                    
+                    <div class="price-box">
+                        <span class="price-amount">၂၉၀,၀၀၀ ကျပ်</span>
+                    </div>
+
+                    <button class="buy-btn" onclick="autoSelect('2years')">
+                         ဝယ်ယူရန် <i class="fas fa-shopping-cart"></i>
+                    </button>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="product-img-box"><img src="./product3.jpg" alt="5 Years"></div>
-                <div class="product-info">
-                    <h3>၅ နှစ်စိမ်</h3>
-                    <span>Quality အကောင်းဆုံး</span><br>
-                    <div class="price-tag">၅၉၀,၀၀၀ ကျပ်</div>
+
+            <div class="product-item">
+                <div class="p-img-box">
+                    <span class="badge-year">5 YEARS</span>
+                    <img src="product3.jpg" alt="5 Years">
+                </div>
+                <div class="p-details">
+                    <h3 style="margin:0; color:var(--primary);">၅ နှစ်စိမ်</h3>
+                    <p style="color:#666; font-size:0.9rem;">Quality အကောင်းဆုံး</p>
+                    
+                    <div class="price-box">
+                        <span class="price-amount">၅၉၀,၀၀၀ ကျပ်</span>
+                    </div>
+
+                    <button class="buy-btn" onclick="autoSelect('5years')">
+                         ဝယ်ယူရန် <i class="fas fa-shopping-cart"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="section">
+    <div class="card">
         <div class="section-title">အသုံးပြုနည်း</div>
-        <ul class="usage">
-            <li>အသုံးမပြုမီ ဆေးဘူးကို လှုပ်ပါ</li>
-            <li>ဆေးအနည်းငယ်ကို လက်ထဲထည့်ပါ</li>
-            <li>လိမ်းပြီး စိမ့်ဝင်အောင် ဆုပ်နယ်ပါ</li>
-            <li>နေ့စဉ် မနက်/ည ၁၅ မိနစ်ခန့်</li>
+        <ul class="usage-list" style="padding:0; list-style:none;">
+            <li><i class="fas fa-check-circle"></i> အသုံးမပြုမီ ဆေးဘူးကို လှုပ်ပေးပါ</li>
+            <li><i class="fas fa-check-circle"></i> ဆေးအနည်းငယ်ကို လက်ထဲထည့်ပါ</li>
+            <li><i class="fas fa-check-circle"></i> လိမ်းပြီး စိမ့်ဝင်အောင် ဆုပ်နယ်ပေးပါ</li>
+            <li><i class="fas fa-check-circle"></i> နေ့စဉ် မနက်/ည ၁၅ မိနစ်ခန့် ပြုလုပ်ပါ</li>
         </ul>
-        <div class="highlight">
-            (၅) ရက်အတွင်း သိသာသော ပြောင်းလဲမှုကို<br>
-            ခံစားရနိုင်ပါသည်။ (ဘေးထွက်ဆိုးကျိုး မရှိပါ)
+        
+        <div style="background:#e8f5e9; border:1px solid #c8e6c9; color:#2e7d32; padding:15px; border-radius:12px; text-align:center; font-weight:bold; margin-top:20px;">
+            (၅) ရက်အတွင်း သိသာသော ပြောင်းလဲမှုကို
+<br>ခံစားရနိုင်ပါသည်။(ဘေးထွက်ဆိုးကျိုး မရှိပါ)
+        </div>
+
+        <div style="margin-top: 25px; text-align:center;">
+            <div class="section-title" style="border:none;">ဆေးထောက်ခံချက်</div>
+            <div style="background:#fff8e1; border:2px solid #ffecb3; border-radius:15px; padding:15px;">
+                <i class="fas fa-shield-alt" style="font-size:30px; color:#ffb300; margin-bottom:5px;"></i><br>
+                <span style="font-weight:bold; color:#795548;">FDA ထောက်ခံချက်ရရှိထားပါသည် <br>တိုင်းရင်းဆေးဝါးမှတ်ပုံတင်အမှတ်<br>
+TMR-012024 (0571)</span>
+            </div>
         </div>
     </div>
 
-    <div class="section">
+    <div class="card">
         <div class="section-title">ပို့ဆောင်နိုင်သော နိုင်ငံများ</div>
         <div class="country-grid">
-            <div class="country-item">🇲🇲 Myanmar</div>
-            <div class="country-item">🇸🇬 Singapore</div>
-            <div class="country-item">🇰🇷 Korea</div>
-            <div class="country-item">🇲🇾 Malaysia</div>
-            <div class="country-item">🇹🇭 Thailand</div>
-            <div class="country-item">🇯🇵 Japan</div>
+            <div class="c-item">🇲🇲 Myanmar</div>
+            <div class="c-item">🇸🇬 Singapore</div>
+            <div class="c-item">🇰🇷 Korea</div>
+            <div class="c-item">🇲🇾 Malaysia</div>
+            <div class="c-item">🇹🇭 Thailand</div>
+            <div class="c-item">🇯🇵 Japan</div>
         </div>
     </div>
 
-    <div class="section">
-        <div class="section-title">
-            <i class="fas fa-edit"></i> အချက်အလက်ဖြည့်ရန်
-        </div>
+    <div class="card" id="order-section">
+        <div class="section-title">အချက်အလက်ဖြည့်ရန်</div>
         
-        <div style="max-width: 600px; margin: 0 auto;">
-            <div class="form-group">
-                <label class="form-label">နာမည် <span style="color:red">*</span></label>
+        <form id="orderForm">
+            <div style="margin-bottom:15px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">နာမည် (Name) <span style="color:red">*</span></label>
                 <input type="text" id="name" class="form-control" placeholder="အမည် ထည့်ပါ">
             </div>
 
-            <div class="form-group">
-                <label class="form-label">ဖုန်းနံပါတ် <span style="color:red">*</span></label>
+            <div style="margin-bottom:15px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">ဖုန်းနံပါတ် (Phone) <span style="color:red">*</span></label>
                 <input type="tel" id="phone" class="form-control" placeholder="09xxxxxxxxx">
             </div>
 
-            <div class="form-group">
-                <label class="form-label">ဆေးဘူး အမျိုးအစား <span style="color:red">*</span></label>
+            <div style="margin-bottom:15px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">ဆေးဘူး အမျိုးအစား</label>
                 <select id="product" class="form-control">
                     <option value="">ရွေးချယ်ပါ</option>
-                    <option value="၁ နှစ်စိမ် (၁၉၀,၀၀၀ ကျပ်)">၁ နှစ်စိမ် (၁၉၀,၀၀၀ ကျပ်)</option>
-                    <option value="၂ နှစ်စိမ် (၂၉၀,၀၀၀ ကျပ်)">၂ နှစ်စိမ် (၂၉၀,၀၀၀ ကျပ်)</option>
-                    <option value="၅ နှစ်စိမ် (၅၉၀,၀၀၀ ကျပ်)">၅ နှစ်စိမ် (၅၉၀,၀၀၀ ကျပ်)</option>
+                    <option value="1year">၁ နှစ်စိမ် (၁၉၀,၀၀၀ ကျပ်)</option>
+                    <option value="2years">၂ နှစ်စိမ် (၂၉၀,၀၀၀ ကျပ်)</option>
+                    <option value="5years">၅ နှစ်စိမ် (၅၉၀,၀၀၀ ကျပ်)</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">နိုင်ငံ (Country)</label>
-                <select id="country" class="form-control" onchange="updateRegions()">
-                    <option value="">နိုင်ငံ ရွေးချယ်ပါ</option>
+            <div style="margin-bottom:15px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">နိုင်ငံ (Country)</label>
+                <select id="country" class="form-control" onchange="loadRegions()">
                     <option value="Myanmar">Myanmar (မြန်မာ)</option>
                     <option value="Thailand">Thailand (ထိုင်း)</option>
                     <option value="Singapore">Singapore (စင်ကာပူ)</option>
-                    <option value="Korea">Korea (ကိုရီးယား)</option>
                     <option value="Malaysia">Malaysia (မလေးရှား)</option>
+                    <option value="Korea">Korea (ကိုရီးယား)</option>
                     <option value="Japan">Japan (ဂျပန်)</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">ဒေသ/မြို့နယ် (Region)</label>
+            <div style="margin-bottom:15px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">ဒေသ/မြို့နယ် (Region)</label>
                 <select id="region" class="form-control">
                     <option value="">အရင်ဆုံး နိုင်ငံရွေးပါ</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">လိပ်စာအပြည့်အစုံ</label>
+            <div style="margin-bottom:15px;">
+                <label style="display:block; font-weight:bold; margin-bottom:5px;">လိပ်စာအပြည့်အစုံ</label>
                 <textarea id="address" class="form-control" rows="3" placeholder="အိမ်အမှတ်၊ လမ်း၊ ရပ်ကွက်..."></textarea>
             </div>
+        </form>
+    </div>
+
+    <div class="card">
+        <div class="section-title">ငွေပေးချေရန်</div>
+        <p style="text-align:center; color:#666;">ငွေလွှဲပြေစာ (Screenshot) ကို<br>
+Viber / Telegram / WhatsApp / <br>Messenger သို့ ပေးပို့နိုင်ပါသည်။
+
+</p>
+
+        <div class="pay-row">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="wave.png" class="pay-icon" onerror="this.style.background='pink'">
+                <div><b>Wave Money</b><br><span id="waveNo" style="color:#005e8e;">09755004908</span></div>
+            </div>
+            <button class="big-btn" style="width:auto; font-size:0.9rem; padding:8px 15px; background:#eee; color:#333; margin:0;" onclick="copyToClip('waveNo')">Copy</button>
+        </div>
+
+        <div class="pay-row">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <img src="kbzpay.png" class="pay-icon" onerror="this.style.background='blue'">
+                <div><b>KBZ Pay</b><br><span id="kbzNo" style="color:#005e8e;">09755004908</span></div>
+            </div>
+            <button class="big-btn" style="width:auto; font-size:0.9rem; padding:8px 15px; background:#eee; color:#333; margin:0;" onclick="copyToClip('kbzNo')">Copy</button>
         </div>
     </div>
 
-    <div class="section">
-        <div class="section-title">
-            <i class="fas fa-money-bill-wave"></i> ငွေပေးချေရန်
+    <div class="card" style="background:transparent; box-shadow:none; padding:0;">
+        <div style="background:#fff3cd; color:#856404; padding:15px; border-radius:10px; margin-bottom:20px; border:1px solid #ffeeba; text-align:center;">
+            <i class="fas fa-exclamation-triangle"></i> ငွေလွှဲ Screenshot မရှိသေးပါက<br>အချက်အလက်များကို အရင်ပို့ထားပေးပါ။
         </div>
 
-        <p style="text-align: center; margin-bottom: 20px;">
-            အထက်ပါအချက်များ ပြည့်စုံပါက<br>
-            အောက်ပါအကောင့်များသို့ ငွေလွှဲပေးနိုင်ပါသည်။
-        </p>
-
-        <div class="payments">
-            <div class="pay">
-                <div class="pay-left">
-                    <div class="pay-logo-box">
-                        <img src="./wave.png" alt="Wave">
-                    </div>
-                    <div class="pay-details">
-                        <b>Wave Money</b>
-                        <span id="waveNum">09755004908</span>
-                    </div>
-                </div>
-                <button class="copy-btn-small" onclick="copyNumber('waveNum')">
-                    <i class="fas fa-copy"></i> Copy
-                </button>
-            </div>
-
-            <div class="pay">
-                <div class="pay-left">
-                    <div class="pay-logo-box">
-                        <img src="./kbzpay.png" alt="KBZ">
-                    </div>
-                    <div class="pay-details">
-                        <b>KBZ Pay</b>
-                        <span id="kbzNum">09755004908</span>
-                    </div>
-                </div>
-                <button class="copy-btn-small" onclick="copyNumber('kbzNum')">
-                    <i class="fas fa-copy"></i> Copy
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <hr style="border:0; border-top:1px dashed #ddd; margin: 25px 0;">
-
-    <div class="contact-card">
-        
-        <div class="instruction-box">
-            <i class="fas fa-exclamation-circle" style="color: #856404;"></i> 
-            <b>အရေးကြီးသည်</b><br>
-            ငွေလွှဲပြီးပါက Screenshot (ငွေလွှဲပြေစာ) ကို<br>
-            အောက်ပါ App များမှတဆင့် ပူးတွဲပေးပို့ပေးပါ။
-        </div>
-
-        <button class="big-btn viber" onclick="fusionSend('viber')">
+        <button class="big-btn bg-viber" onclick="sendOrder('viber')">
             <i class="fab fa-viber"></i> Viber ဖြင့်မှာမည်
         </button>
-
-        <button class="big-btn telegram" onclick="fusionSend('telegram')">
+        <button class="big-btn bg-tele" onclick="sendOrder('telegram')">
             <i class="fab fa-telegram"></i> Telegram ဖြင့်မှာမည်
         </button>
-
-        <a href="#" id="waLink" class="big-btn whatsapp" onclick="updateWALink()">
+        <button class="big-btn bg-wa" onclick="sendOrder('whatsapp')">
             <i class="fab fa-whatsapp"></i> WhatsApp ဖြင့်မှာမည်
-        </a>
-
-        <button class="big-btn messenger" onclick="fusionSend('messenger')">
+        </button>
+        <button class="big-btn bg-msg" onclick="sendOrder('messenger')">
             <i class="fab fa-facebook-messenger"></i> Messenger ဖြင့်မှာမည်
         </button>
     </div>
 
 </div>
 
-<footer>
-    <p>ကျေးဇူးတင်ပါသည်။ မိတ်ဆွေများနှင့် မျှဝေပေးနိုင်ပါသည်။</p>
-    <small>© 2023 Min Htet Thar. All rights reserved.</small>
-</footer>
-
-<div id="toast">Notification</div>
+<div id="toast">Message</div>
 
 <script>
+// --- CONFIGURATION ---
+const CONFIG = {
+    viberPhone: "959755004908",
+    telegramUser: "Minhtetthar201097",
+    whatsappPhone: "959755004908",
+    messengerID: "minhtetthar755004908"
+};
+
 // --- COMPREHENSIVE REGION DATA ---
-const locationData = {
+// နိုင်ငံတစ်နိုင်ငံချင်းစီအတွက် အစုံလင်ဆုံး ဒေတာများ
+const locationDB = {
     "Myanmar": [
         "Yangon (ရန်ကုန်)", "Mandalay (မန္တလေး)", "Nay Pyi Taw (နေပြည်တော်)", 
-        "Ayeyarwady (ဧရာဝတီ)", "Bago (ပဲခူး)", "Magway (မကွေး)", "Sagaing (စစ်ကိုင်း)", "Tanintharyi (တနင်္သာရီ)",
-        "Kachin (ကချင်)", "Kayah (ကယား)", "Kayin (ကရင်)", "Chin (ချင်း)", 
-        "Mon (မွန်)", "Rakhine (ရခိုင်)", "Shan (ရှမ်း) - South", "Shan (ရှမ်း) - North", "Shan (ရှမ်း) - East"
-    ],
-    "Singapore": [
-        "Central Region", "East Region", "North Region", "North-East Region", "West Region", "Jurong", "Tampines", "Woodlands", "Yishun", "Bedok", "Sengkang", "Hougang"
+        "Ayeyarwady (ဧရာဝတီ)", "Bago (ပဲခူး)", "Magway (မကွေး)", "Sagaing (စစ်ကိုင်း)", 
+        "Tanintharyi (တနင်္သာရီ)", "Kachin (ကချင်)", "Kayah (ကယား)", "Kayin (ကရင်)", 
+        "Chin (ချင်း)", "Mon (မွန်)", "Rakhine (ရခိုင်)", "Shan (South)", "Shan (North)", "Shan (East)"
     ],
     "Thailand": [
-        "Bangkok (ဘန်ကောက်)", "Chiang Mai (ချင်းမိုင်)", "Phuket (ဖူးခက်)", "Chonburi (ချွန်ဘူရီ)", "Samut Sakhon (မဟာချိုင်)",
-        "Tak (မဲဆောက်/တပ်ခ်)", "Surat Thani", "Songkhla (Hat Yai)", "Ranong (ရနောင်း)", "Kanchanaburi",
-        "Ayutthaya", "Nonthaburi", "Pathum Thani", "Samut Prakan", "Nakhon Pathom",
-        "Chiang Rai", "Rayong", "Prachuap Khiri Khan", "Phetchaburi", "Ratchaburi",
-        "Khon Kaen", "Udon Thani", "Nakhon Ratchasima (Korat)",
-        "Phang Nga", "Krabi", "Trang", "Nakhon Si Thammarat",
-        "Phitsanulok", "Sukhothai", "Lamphun", "Lampang"
+        "Bangkok (ဘန်ကောက်)", "Chiang Mai (ချင်းမိုင်)", "Phuket (ဖူးခက်)", "Chonburi (ချွန်ဘူရီ)", 
+        "Samut Sakhon (မဟာချိုင်)", "Tak (မဲဆောက်/တပ်ခ်)", "Surat Thani", "Songkhla (Hat Yai)", 
+        "Ranong (ရနောင်း)", "Rayong", "Kanchanaburi", "Ayutthaya", "Nonthaburi", "Pathum Thani", 
+        "Samut Prakan", "Nakhon Pathom", "Chiang Rai", "Prachuap Khiri Khan", "Phetchaburi", 
+        "Khon Kaen", "Udon Thani", "Nakhon Ratchasima (Korat)", "Krabi", "Phang Nga"
     ],
-    "Korea": [
-        "Seoul (ဆိုးလ်)", "Busan (ဘူဆန်)", "Incheon (အင်ချွန်း)", "Daegu", "Gwangju", "Daejeon", "Ulsan", "Sejong",
-        "Gyeonggi-do (ဂျောင်းဂီ)", "Gangwon-do", "Chungcheongbuk-do", "Chungcheongnam-do", 
-        "Jeollabuk-do", "Jeollanam-do", "Gyeongsangbuk-do", "Gyeongsangnam-do", "Jeju (ဂျယ်ဂျူ)"
+    "Singapore": [
+        "Central Region", "East Region", "West Region", "North Region", "North-East Region",
+        "Jurong West", "Bedok", "Tampines", "Woodlands", "Sengkang", "Hougang", "Yishun", 
+        "Choa Chu Kang", "Ang Mo Kio", "Bukit Batok", "Bukit Merah"
     ],
     "Malaysia": [
         "Kuala Lumpur", "Selangor", "Johor (ဂျိုဟိုး)", "Penang (ပီနန်)", "Kedah", "Kelantan", 
-        "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", 
-        "Sabah", "Sarawak", "Terengganu", "Putrajaya", "Labuan"
+        "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Sabah", "Sarawak", 
+        "Terengganu", "Putrajaya", "Labuan"
+    ],
+    "Korea": [
+        "Seoul (ဆိုးလ်)", "Busan (ဘူဆန်)", "Incheon (အင်ချွန်း)", "Daegu", "Gwangju", "Daejeon", 
+        "Ulsan", "Sejong", "Gyeonggi-do", "Gangwon-do", "Chungcheongbuk-do", "Chungcheongnam-do", 
+        "Jeollabuk-do", "Jeollanam-do", "Gyeongsangbuk-do", "Gyeongsangnam-do", "Jeju (ဂျယ်ဂျူ)"
     ],
     "Japan": [
         "Tokyo (တိုကျို)", "Osaka (အိုဆာကာ)", "Kyoto (ကျိုတို)", "Aichi (Nagoya)", "Kanagawa (Yokohama)", 
-        "Chiba", "Saitama", "Hokkaido", "Fukuoka", "Hyogo (Kobe)",
-        "Okinawa", "Shizuoka", "Ibaraki", "Hiroshima", "Gifu", "Mie", "Gunma", "Tochigi",
-        "Niigata", "Nagano", "Shiga", "Nara", "Okayama", "Kumamoto", "Kagoshima"
+        "Chiba", "Saitama", "Hokkaido", "Fukuoka", "Hyogo (Kobe)", "Okinawa", "Shizuoka", 
+        "Ibaraki", "Hiroshima", "Gifu", "Mie", "Gunma", "Tochigi", "Niigata", "Nagano"
     ]
 };
 
-// --- LOGIC ---
+// Start
+window.onload = function() { loadRegions(); };
 
-function updateRegions() {
+function loadRegions() {
     const country = document.getElementById("country").value;
-    const regionSel = document.getElementById("region");
-    regionSel.innerHTML = "<option value=''>ဒေသ ရွေးချယ်ပါ</option>";
-
-    if (locationData[country]) {
-        // Sort alphabetically for easier finding, except Myanmar which has a custom order
-        let regions = locationData[country];
-        if(country !== "Myanmar") {
-             regions.sort();
-        }
-
-        regions.forEach(r => {
-            let opt = document.createElement("option");
-            opt.value = r;
-            opt.text = r;
-            regionSel.add(opt);
+    const regionSelect = document.getElementById("region");
+    regionSelect.innerHTML = "<option value=''>ဒေသ/မြို့နယ် ရွေးချယ်ပါ</option>";
+    
+    if(locationDB[country]) {
+        // ထိုင်းနှင့် ကိုရီးယား ဂျပန်ကို Alphabet အတိုင်းစီမယ် (Myanmar မပါ)
+        let regions = locationDB[country];
+        
+        regions.forEach(city => {
+            let option = document.createElement("option");
+            option.text = city; option.value = city;
+            regionSelect.add(option);
         });
     }
 }
 
-function getOrderText() {
+function autoSelect(val) {
+    document.getElementById("product").value = val;
+    document.getElementById("order-section").scrollIntoView({behavior: "smooth"});
+    // Highlight Form
+    const sel = document.getElementById("product");
+    sel.style.border = "2px solid #ff6b00";
+    sel.style.background = "#fff3cd";
+    setTimeout(() => { sel.style.border = "1px solid #ddd"; sel.style.background = "#fafafa"; }, 2000);
+}
+
+function createOrderMsg() {
     const name = document.getElementById("name").value || "-";
     const phone = document.getElementById("phone").value || "-";
-    const product = document.getElementById("product").value || "-";
-    const country = document.getElementById("country").value || "-";
-    const region = document.getElementById("region").value || "-";
+    const pSelect = document.getElementById("product");
+    const product = pSelect.options[pSelect.selectedIndex].text;
+    const country = document.getElementById("country").value;
+    const region = document.getElementById("region").value;
     const address = document.getElementById("address").value || "-";
 
-    // Format the message nicely
-    return `မင်္ဂလာပါ Order တင်ချင်လို့ပါခင်ဗျာ။\n\n👤 နာမည်: ${name}\n📞 ဖုန်း: ${phone}\n🧴 ဆေးဘူး: ${product}\n🏳️ နိုင်ငံ: ${country}\n📍 ဒေသ: ${region}\n🏠 လိပ်စာ: ${address}\n\n⚠️ (ငွေလွှဲ Screenshot ပို့ရန် ကျန်ပါသေးသည်)`;
+    return `မင်္ဂလာပါ၊ Order တင်လိုပါသည်။\n\n👤 နာမည်: ${name}\n📞 ဖုန်း: ${phone}\n📦 ပစ္စည်း: ${product}\n🌍 နိုင်ငံ: ${country} (${region})\n🏠 လိပ်စာ: ${address}\n\n(ငွေလွှဲ Screenshot ပူးတွဲပေးပို့ပါမည်)`;
 }
 
-function validateForm() {
-    if(!document.getElementById("name").value || !document.getElementById("phone").value || !document.getElementById("product").value) {
-        showToast("⚠️ ကျေးဇူးပြု၍ နာမည်၊ ဖုန်း နှင့် ဆေးဘူး ရွေးပေးပါ");
-        return false;
+function sendOrder(app) {
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    if(!name || !phone) {
+        showToast("⚠️ ကျေးဇူးပြု၍ နာမည် နှင့် ဖုန်း အရင်ဖြည့်ပါ");
+        return;
     }
-    return true;
-}
 
-// Fusion Send: Copy Text -> Open App
-function fusionSend(app) {
-    if(!validateForm()) return;
+    const msg = createOrderMsg();
 
-    const text = getOrderText();
-    let url = "";
+    if(app === 'whatsapp') {
+        window.location.href = `https://wa.me/${CONFIG.whatsappPhone}?text=${encodeURIComponent(msg)}`;
+        return;
+    }
 
-    // Replace with your actual IDs/Numbers
-    if (app === 'viber') url = "viber://chat?number=%2B959755004908";
-    if (app === 'telegram') url = "https://t.me/Minhtetthar201097";
-    if (app === 'messenger') url = "https://m.me/minhtetthar755004908";
-
-    // Auto Copy before opening app
-    navigator.clipboard.writeText(text).then(() => {
-        showToast("Order စာ Copy ကူးပြီးပါပြီ။ App တွင် Paste ချပါ");
-        setTimeout(() => { window.location.href = url; }, 1500);
-    }).catch(err => {
-        // Fallback if copy fails
-        window.location.href = url;
+    navigator.clipboard.writeText(msg).then(() => {
+        showToast("✅ Order စာ Copy ကူးပြီးပါပြီ။ App တွင် Paste ချပါ။");
+        setTimeout(() => {
+            let url = "";
+            if(app === 'viber') url = `viber://chat?number=%2B${CONFIG.viberPhone}`;
+            if(app === 'telegram') url = `https://t.me/${CONFIG.telegramUser}`;
+            if(app === 'messenger') url = `https://m.me/${CONFIG.messengerID}`;
+            window.location.href = url;
+        }, 1500);
     });
 }
 
-function updateWALink() {
-    if(!validateForm()) return;
-    const text = encodeURIComponent(getOrderText());
-    document.getElementById("waLink").href = `https://wa.me/959755004908?text=${text}`;
-}
-
-function copyNumber(id) {
-    const txt = document.getElementById(id).innerText;
+function copyToClip(elementId) {
+    const txt = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(txt).then(() => showToast("✅ ဖုန်းနံပါတ် Copy ကူးပြီးပါပြီ"));
 }
 
-function showToast(msg) {
-    const t = document.getElementById("toast");
-    t.innerText = msg;
-    t.className = "show";
-    setTimeout(() => { t.className = t.className.replace("show", ""); }, 4000);
+function showToast(text) {
+    const x = document.getElementById("toast");
+    x.innerText = text;
+    x.className = "show";
+    setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
 }
-
-// Init WhatsApp link listener to update real-time
-document.getElementById("name").addEventListener("input", () => {
-    // Basic update for WA link
-    const text = encodeURIComponent(getOrderText());
-    document.getElementById("waLink").href = `https://wa.me/959755004908?text=${text}`;
-});
-
 </script>
-</body>
-</html>
+</a>
+<hr>
+<footer class="footer">
+  <p>ဝန်ဆောင်မှုအသုံးပြုပေးသည့်အတွက် ကျေးဇူးတင်ပါသည်။</p>
+  <small>© 2023 Min Htet Thar. All rights reserved.</small>
+</footer>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Min Htet Thar - သဘာဝဆေးမြစ်စိမ်ဆေး</title>
+
+<!-- LINK PREVIEW FOR Messenger / Facebook / Telegram / Viber / WhatsApp -->
+<meta property="og:title" content="Min Htet Thar - သဘာဝဆေးမြစ်စိမ်ဆေး">
+<meta property="og:description" content="အမျိုးသားများအတွက် သဘာဝဆေးမြစ်စိမ်ဆေး။ အိမ်တိုင်ရာရောက် ပို့ဆောင်ပေးပါသည်။">
+<meta property="og:image" content="https://minhtetthar2023.github.io/minhtetthar/banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://minhtetthar2023.github.io/minhtetthar/">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Min Htet Thar - သဘာဝဆေးမြစ်စိမ်ဆေး">
+<meta name="twitter:description" content="အမျိုးသားများအတွက် သဘာဝဆေးမြစ်စိမ်ဆေး။ အိမ်တိုင်ရာရောက် ပို့ဆောင်ပေးပါသည်။">
+<meta name="twitter:image" content="https://minhtetthar2023.github.io/minhtetthar/banner.jpg">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary-color: #0a2540;
+    --secondary-color: #1e3c72;
+    --accent-color: #ff9800;
+    --text-color: #333;
+    --light-bg: #f4f7f9;
+    --white: #ffffff;
+    --success: #28a745;
+}
+
+body {
+    margin: 0;
+    font-family: 'Padauk', sans-serif;
+    background: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.header-logo {
+    width: 110px;
+    height: 110px;
+    background-color: var(--white);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.header-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.container {
+    max-width: 900px;
+    margin: -30px auto 20px;
+    padding: 0 15px;
+}
+
+.section {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* product */
+.product-grid {
+    display: grid;
+    gap: 15px;
+}
+@media (min-width:600px){
+    .product-grid{grid-template-columns:repeat(3,1fr);}
+    .country-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+.product-card {
+    border:1px solid #eee;
+    border-radius:15px;
+    overflow:hidden;
+}
+.product-img-box{
+    height:200px;
+}
+.product-img-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.product-info{
+    padding:10px;
+    text-align:center;
+}
+.price-tag{
+    background:var(--accent-color);
+    color:white;
+    padding:6px 15px;
+    border-radius:20px;
+    display:inline-block;
+    margin-top:8px;
+}
+
+/* country */
+.country-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+.country-item{
+    background:#f4f4f4;
+    padding:10px;
+    border-radius:10px;
+}
+
+/* usage */
+.usage { list-style: none; padding: 0; }
+.usage li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+.usage li::before {
+    content: '✔';
+    position: absolute; left: 0; color: var(--success);
+}
+
+/* highlight */
+.highlight {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+}
+
+/* payment */
+.payments{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+.pay{
+    border:1px solid #eee;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+}
+.pay-logo-box{
+    height:50px;
+}
+.pay-logo-box img{
+    max-height:100%;
+}
+
+/* CONTACT CARD */
+.contact-card{
+  background:#fff;
+  padding:20px;
+  border-radius:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  max-width:400px;
+  margin:20px auto;
+}
+
+.contact-title{
+  color:#e91e63;
+  margin-bottom:15px;
+  font-size:20px;
+  border-bottom:1px dashed #ddd;
+  padding-bottom:10px;
+}
+
+.big-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:16px;
+  margin-bottom:14px;
+  border-radius:50px;
+  color:#fff;
+  font-size:20px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.viber{background:#7360f2;}
+.telegram{background:#2aa7df;}
+.whatsapp{background:#25d366;}
+.messenger{background:#1877f2;}
+
+.big-btn i{
+  font-size:22px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-logo">
+<img src="logo.png">
+</div>
+<h1>MIN HTET THAR</h1>
+<p>အမျိုးသားများအတွက် သဘာဝဆေးမြစ်စိမ်ဆေး</p>
+</header>
+
+<div class="container">
+
+<div class="section">
+<div class="section-title">ရရှိနိုင်သော ဆေးအမျိုးအစားများ</div>
+
+<div class="product-grid">
+<div class="product-card">
+<div class="product-img-box"><img src="product1.jpg"></div>
+<div class="product-info">
+<h3>၁ နှစ်စိမ်</h3>
+<span>သာမန်အားဖြည့်ရန် သင့်တော်</span><br>
+<div class="price-tag">၁၉၀,၀၀၀ ကျပ်</div>
+</div>
+</div>
+
+<div class="product-card">
+<div class="product-img-box"><img src="product2.jpg"></div>
+<div class="product-info">
+<h3>၂ နှစ်စိမ်</h3>
+<span>ပိုမိုထိရောက်မှု ရရှိစေရန်</span><br>
+<div class="price-tag">၂၉၀,၀၀၀ ကျပ်</div>
+</div>
+</div>
+
+<div class="product-card">
+<div class="product-img-box"><img src="product3.jpg"></div>
+<div class="product-info">
+<h3>၅ နှစ်စိမ်</h3>
+<span>အရည်အသွေးမြင့် ထုတ်ကုန်</span><br>
+<div class="price-tag">၅၉၀,၀၀၀ ကျပ်</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">အသုံးပြုနည်း</div>
+<ul class="usage">
+<li>အသုံးမပြုမီ ဆေးဘူးကို လှုပ်ပါ</li>
+<li>ဆေးအနည်းငယ်ကို လက်ထဲထည့်ပါ</li>
+<li>လိမ်းပြီး စုပ်ဝင်အောင် ဆုပ်နယ်ပါ</li>
+<li>နေ့စဉ် မနက်/ည ၁၅ မိနစ်ခန့်</li>
+</ul>
+<p style="color:red;text-align:center;font-weight:bold;">
+ဆေးလိမ်းပြီး ချက်ချင်း ရေမဆေးပါနှင့်
+</p>
+</div>
+
+<div class="highlight">
+(၅) ရက်အတွင်း သိသာသော ပြောင်းလဲမှုကို<br>
+ခံစားရနိုင်ပါသည်။ (ဘေးထွက်ဆိုးကျိုး မရှိပါ)
+</div>
+
+<div class="section">
+<div class="section-title">ပို့ဆောင်နိုင်သော နိုင်ငံများ</div>
+<div class="country-grid">
+<div class="country-item">🇲🇲 Myanmar</div>
+<div class="country-item">🇸🇬 Singapore</div>
+<div class="country-item">🇰🇷 Korea</div>
+<div class="country-item">🇲🇾 Malaysia</div>
+<div class="country-item">🇹🇭 Thailand</div>
+<div class="country-item">🇯🇵 Japan</div>
+</div>
+</div>
+
+
+<div class="section">
+<div class="section-title">ငွေပေးချေရန်</div>
+<div class="payments">
+<div class="pay">
+<div class="pay-logo-box"><img src="wave.png"></div>
+<b>Wave Money</b><br>
+09755004908
+</div>
+
+<div class="pay">
+<div class="pay-logo-box"><img src="kbzpay.png"></div>
+<b>KBZ Pay</b><br>
+09755004908
+</div>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">
+<i class="fas fa-shopping-cart"></i> မှာယူရန်
+</div>
+<p style="text-align:center;">
+ကြိုက်နှစ်သက်ရာ ဆေးဘူးကို ပမာဏအတိုင်း<br>
+ငွေလွှဲပြီးပါက ငွေလွှဲပြေစာ နှင့် လိပ်စာကိုအောက်ပါ<br>
+Application များမှတဆင့် ပေးပို့နိုင်ပါသည်။
+</p>
+
+<div class="contact-card">
+<div class="contact-title">ဆက်သွယ်ရန်</div>
+
+<a href="viber://chat?number=%2B959755004908" class="big-btn viber">
+<i class="fab fa-viber"></i> Viber
+</a>
+
+<a href="https://t.me/Minhtetthar201097" class="big-btn telegram">
+<i class="fab fa-telegram"></i> Telegram
+</a>
+
+<a href="https://wa.me/959755004908" class="big-btn whatsapp">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</a>
+
+<a href="https://m.me/minhtetthar755004908" class="big-btn messenger">
+<i class="fab fa-facebook-messenger"></i> Page Messenger
+</a>
+
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>ကျေးဇူးတင်ပါသည်။ မိတ်ဆွေများနှင့် မျှဝေပေးနိုင်ပါသည်။</p>
+<small>© 2023 Min Htet Thar. All rights reserved.</small>
+</footer>
+
+</body>
+</html>

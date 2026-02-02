@@ -18,6 +18,9 @@
       --white:#fff;
       --text:#333;
       --muted:#666;
+      --notice-bg:#fffaf0;
+      --notice-border:#ffe5b4;
+      --notice-icon-bg:#fff0c7;
     }
     *{box-sizing:border-box}
     body{
@@ -25,7 +28,7 @@
       font-family:'Padauk',sans-serif;
       background:var(--bg);
       color:var(--text);
-      padding-bottom:90px;
+      padding-bottom:120px;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
@@ -34,7 +37,7 @@
     header{
       background:linear-gradient(to right,#141e30,#243b55);
       color:var(--white);
-      padding:30px 20px 50px;
+      padding:20px 20px 30px;
       text-align:center;
       border-bottom-left-radius:40px;
       border-bottom-right-radius:40px;
@@ -42,6 +45,7 @@
     }
     .logo{width:100px;height:100px;background:var(--white);border-radius:50%;margin:0 auto 10px;padding:4px;box-shadow:0 0 15px rgba(255,255,255,0.12)}
     .logo img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .header-banner{width:100%;max-height:160px;object-fit:cover;border-radius:12px;margin-top:12px;display:block}
 
     /* Layout */
     .container{max-width:700px;margin:-40px auto 0;padding:0 15px;position:relative;z-index:10}
@@ -56,7 +60,7 @@
     .p-img-box{height:250px;background:#f0f0f0;position:relative;overflow:hidden}
     .p-img-box img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
-/* Float animation for product images (gentle) */
+    /* Float animation for product images (gentle) */
     .p-img-box img{animation:float 6s ease-in-out infinite; transition:transform .35s ease}
     .product-item:nth-child(1) .p-img-box img{animation-delay:0s}
     .product-item:nth-child(2) .p-img-box img{animation-delay:.8s}
@@ -116,61 +120,94 @@
     .buy-btn.pulse{animation:pulse 3.6s ease-in-out infinite}
     @keyframes pulse{0%{box-shadow:0 6px 18px rgba(255,107,0,0.22)}50%{box-shadow:0 14px 30px rgba(255,107,0,0.18)}100%{box-shadow:0 6px 18px rgba(255,107,0,0.22)}}
 
-/* ===== Contact buttons (ALL SAME SIZE) ===== */
-.big-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-
-  width:80%;
-  margin:0 auto 10px;
-  padding:12px 0;
-
-  border-radius:30px;
-  color:#fff;
-  border:none;
-  cursor:pointer;
-
-  font-size:1rem;
-  font-weight:600;
-  text-decoration:none;
-}
-
-.big-btn i{
-  font-size:1.4rem;
-}
-
-.bg-viber{background:#7360f2;}
-.bg-tele{background:#2aa7df;}
-.bg-wa{background:#25d366;}
-.bg-msg{background:#0084ff;}
-.facebook-btn{background:#1877f2;}    
-
-    /* Two-line centered info style (aligned exactly as requested) */
-    .info-center{
+    /* ===== Contact buttons (ALL SAME SIZE) ===== */
+    .big-btn{
       display:flex;
-      flex-direction:column;
       align-items:center;
       justify-content:center;
-      text-align:center;
-      background:transparent;
-      border-radius:10px;
-      padding:14px 12px;
-      line-height:1.45;
-      color:var(--muted);
-      font-weight:700;
-      margin:14px 0;
-      white-space:pre-line;
+      gap:10px;
+
+      width:80%;
+      margin:10px auto;
+      padding:12px 0;
+
+      border-radius:30px;
+      color:#fff;
+      border:none;
+      cursor:pointer;
+
+      font-size:1rem;
+      font-weight:600;
+      text-decoration:none;
     }
-    .info-success{background:#e8f5e9;border:1px solid #c8e6c9;color:#2e7d32}
-    .info-fda{background:#fff8e1;border:2px solid #ffecb3;color:#795548}
-    .info-payment{background:transparent;color:var(--muted);font-weight:700}
+
+    .big-btn i{
+      font-size:1.4rem;
+    }
+
+    .bg-viber{background:#7360f2;}
+    .bg-tele{background:#2aa7df;}
+    .bg-wa{background:#25d366;}
+    .bg-msg{background:#0084ff;}
+    .facebook-btn{background:#1877f2;}    
+
+    .copy-order-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:10px;
+      background:#ffb300;
+      color:#08121a;
+      font-weight:800;
+      border:none;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      margin-top:6px;
+    }
+
+    /* Notice / instruction card (updated) */
+    .soft-notice {
+      position:relative;
+      background:var(--notice-bg);
+      border:1.5px solid var(--notice-border);
+      border-radius:12px;
+      padding:16px 18px 16px 74px; /* left padding to make room for icon */
+      font-size:0.98rem;
+      line-height:1.45;
+      color:var(--secondary);
+      box-shadow:0 6px 18px rgba(20,30,40,0.06);
+      overflow:visible;
+      animation:notice-in .48s cubic-bezier(.2,.9,.3,1) both;
+    }
+.soft-notice{
+  padding:16px 18px !important;
+  text-align:center;
+}
+
+.notice-line{
+  text-align:center;
+}
+
+    @keyframes icon-pulse{
+      0%{transform:translateY(-50%) scale(1)}
+      50%{transform:translateY(-50%) scale(1.04)}
+      100%{transform:translateY(-50%) scale(1)}
+    }
+
+    @keyframes notice-in{
+      from{opacity:0; transform:translateY(8px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+
+    .notice-line { margin:4px 0; color:var(--muted); font-weight:700; }
+
+    .info-center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 
     /* Toast */
-    #toast{visibility:hidden;min-width:280px;margin-left:-140px;background:#333;color:#fff;text-align:center;border-radius:50px;padding:16px;position:fixed;z-index:100;left:50%;bottom:40px;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
+    #toast{visibility:hidden;min-width:280px;margin-left:-140px;background:#333;color:#fff;text-align:center;border-radius:50px;padding:16px;position:fixed;z-index:100;left:50%;bottom:110px;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.4)}
     #toast.show{visibility:visible;animation:fadein .45s,fadeout .45s 2.5s}
-    @keyframes fadein{from{bottom:0;opacity:0}to{bottom:40px;opacity:1}} @keyframes fadeout{from{bottom:40px;opacity:1}to{bottom:0;opacity:0}}
+    @keyframes fadein{from{bottom:0;opacity:0}to{bottom:110px;opacity:1}} @keyframes fadeout{from{bottom:110px;opacity:1}to{bottom:0;opacity:0}}
 
     /* Forms and misc */
     .form-control{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;background:#fafafa;font-size:1rem;outline:none}
@@ -184,13 +221,16 @@
     @media (prefers-reduced-motion:reduce){
       .p-img-box img{animation:none!important}
       .buy-btn.pulse{animation:none!important}
-      .product-item,.badge-year{transition:none!important}
+      .product-item,.badge-year,.soft-notice,.soft-notice .notice-icon{transition:none!important;animation:none!important}
     }
 
     /* Responsive small screens */
     @media (max-width:480px){
       .p-img-box{height:200px}
       .badge-year{padding:6px 12px;font-size:.78rem}
+      .big-btn{width:92%}
+      .soft-notice {padding-left:64px}
+      .soft-notice .notice-icon{left:12px;width:44px;height:44px}
     }
 
     footer.footer{text-align:center;padding:15px 10px;margin-top:20px}
@@ -202,6 +242,7 @@
     <div class="logo"><img src="logo.png" alt="Logo"></div>
     <h2>MIN HTET THAR</h2>
     <p>အမျိုးသားများအတွက် သဘာဝဆေးမြစ်စိမ်ဆေး</p>
+    <img src="banner..JPG" alt="Banner" class="header-banner" onerror="this.style.display='none'">
   </header>
 
   <div class="container">
@@ -211,7 +252,7 @@
       <div class="section-title">ရရှိနိုင်သော ဆေးအမျိုးအစားများ</div>
 
       <div class="product-stack">
-        <!-- product1: image already contains 1 YEAR badge so overlay hidden -->
+        <!-- product1 -->
         <div class="product-item" data-reveal>
           <div class="p-img-box">
             <span class="badge-year">1 YEAR</span>
@@ -263,16 +304,11 @@
         <li><i class="fas fa-check-circle" style="color:#28a745;margin-top:5px"></i> လိမ်းပြီး စိမ့်ဝင်အောင် ဆုပ်နယ်ပေးပါ</li>
         <li><i class="fas fa-check-circle" style="color:#28a745;margin-top:5px"></i> နေ့စဉ် မနက်/ည ၁၅ မိနစ်ခန့် ပြုလုပ်ပါ</li>
       </ul>
- <!-- Two-line centered info (aligned exactly as requested) -->
-     <div class="info-center info-success">(၅) ရက်အတွင်း သိသာသော ပြောင်းလဲမှုကို
-ခံစားရနိုင်ပါသည်။ (ဘေးထွက်ဆိုးကျိုးမရှိပါ)
-      </div>
 
       <div style="margin-top:12px;text-align:center">
         <div class="section-title" style="border:none">ဆေးထောက်ခံချက်</div>
-        <div class="info-center info-fda">FDA ထောက်ခံချက်ရရှိထားပါသည်
-တိုင်းရင်းဆေးဝါးမှတ်ပုံတင်အမှတ်
-TMR-012024 (0571)
+        <div class="info-center info-fda" style="background:#fff8e1;border:2px solid #ffecb3;color:#795548;padding:10px;border-radius:10px">
+          FDA ထောက်ခံချက်ရရှိထားပါသည် — တိုင်းရင်းဆေးဝါးမှတ်ပုံတင် အမှတ် TMR-012024 (0571)
         </div>
       </div>
     </div>
@@ -284,12 +320,9 @@ TMR-012024 (0571)
         <div class="c-item"> 🇲🇲 Myanmar</div>
         <div class="c-item">🇹🇭 Thailand</div>
         <div class="c-item">🇸🇬 Singapore</div>
-        <div class="c-item">🇲🇾
-Malaysia</div>
-        <div class="c-item">🇰🇷
-Korea</div>
-        <div class="c-item">🇯🇵
-Japan</div>
+        <div class="c-item">🇲🇾 Malaysia</div>
+        <div class="c-item">🇰🇷 Korea</div>
+        <div class="c-item">🇯🇵 Japan</div>
       </div>
     </div>
 
@@ -341,15 +374,20 @@ Japan</div>
           <label style="display:block;font-weight:700;margin-bottom:5px">လိပ်စာအပြည့်အစုံ</label>
           <textarea id="address" class="form-control" rows="3" placeholder="အိမ်အမှတ်၊ လမ်း၊ ရပ်ကွက်..."></textarea>
         </div>
+
+        <!-- New: Copy Order Button -->
+        <div style="text-align:center;margin-top:6px">
+          <button type="button" class="copy-order-btn" onclick="copyOrder()">
+            <i class="fas fa-copy"></i> Order စာ Copy
+          </button>
+        </div>
+
       </form>
     </div>
 
     <!-- PAYMENT / CONTACT -->
     <div class="card">
       <div class="section-title">ငွေပေးချေရန်</div>
-<div class="info-center info-payment">ငွေလွှဲပြေစာ (Screenshot) ကို Viber / Telegram / WhatsApp / Messenger သို့ ပေးပို့နိုင်ပါသည်။
-      </div>
-
       <div class="pay-row">
         <div style="display:flex;align-items:center;gap:10px">
           <img src="wave.png" class="pay-icon" alt="Wave" onerror="this.style.background='#ffdede'">
@@ -367,18 +405,34 @@ Japan</div>
       </div>
     </div>
 
-      </div>
+    <!-- Instruction box (updated: professional, 5 lines only) -->
+<div class="info-center" style="font-weight:800;font-size:1rem;white-space:normal">
+  <div class="soft-notice" aria-live="polite">
+      <div class="section-title">📋 Order တင်နည်း</div>
+   <div class="info-center">𝟏. Order စာကို Copy လုပ်ပါ<br><br>𝟐. အောက်ပါ App များမှတဆင့်<br> Paste & Send လုပ်ပါ<br><br>𝟑.
+ငွေလွှဲပြီးပါက📄 ငွေလွှဲပြေစာ <br> (Screenshot) ပို့ပေးပါ<br> <br> 
 
-      <button class="big-btn bg-viber" onclick="sendOrder('viber')"><i class="fab fa-viber"></i> Viber ဖြင့်မှာမည်</button>
-      <button class="big-btn bg-tele" onclick="sendOrder('telegram')"><i class="fab fa-telegram"></i> Telegram ဖြင့်မှာမည်</button>
-      <button class="big-btn bg-wa" onclick="sendOrder('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp ဖြင့်မှာမည်</button>
-      <button class="big-btn bg-msg" onclick="sendOrder('messenger')"><i class="fab fa-facebook-messenger"></i> Messenger ဖြင့်မှာမည်</button>
-<a href="https://facebook.com/minhtetthar755004908"
-   target="_blank"
-   class="big-btn facebook-btn">
-   <i class="fab fa-facebook"></i> Facebook Page
-</a>
+💰 ငွေလက်ခံရရှိပြီးနောက်✔️<br>
+🚚 Delivery အပ်ပေးပါမည် 🛫<br>  
     </div>
+  </div>
+</div> 
+        </div>
+      </div>
+    </div>
+
+      <!-- contact buttons -->
+      <div style="text-align:center">
+        <button class="big-btn bg-viber" onclick="sendOrder('viber')"><i class="fab fa-viber"></i> Viber ဖြင့်မှာမည်</button>
+        <button class="big-btn bg-tele" onclick="sendOrder('telegram')"><i class="fab fa-telegram"></i> Telegram ဖြင့်မှာမည်</button>
+        <button class="big-btn bg-wa" onclick="sendOrder('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp ဖြင့်မှာမည်</button>
+        <button class="big-btn bg-msg" onclick="sendOrder('messenger')"><i class="fab fa-facebook-messenger"></i> Messenger ဖြင့်မှာမည်</button>
+        <a href="https://facebook.com/minhtetthar755004908"
+           target="_blank"
+           class="big-btn facebook-btn">
+           <i class="fab fa-facebook"></i> Facebook Page
+        </a>
+      </div>
 
   </div>
 
@@ -407,8 +461,6 @@ Japan</div>
         "Ayeyarwady (ဧရာဝတီ)","Shan (ရှမ်း) - North","Shan (ရှမ်း) - South","Shan (ရှမ်း) - East",
         "Nay Pyi Taw (နေပြည်တော်)"
       ],
-
-      // Thailand (major provinces; comprehensive common list)
       "Thailand": [
         "Bangkok (กรุงเทพมหานคร)","Amnat Charoen","Ang Thong","Bueng Kan","Buri Ram","Chachoengsao",
         "Chai Nat","Chaiyaphum","Chanthaburi","Chiang Mai","Chiang Rai","Chonburi","Chumphon","Kalasin",
@@ -421,28 +473,20 @@ Japan</div>
         "Samut Sakhon","Samut Songkhram","Sing Buri","Si Sa Ket","Sukhothai","Suphan Buri","Surat Thani",
         "Surin","Tak","Trang","Trat","Ubon Ratchathani","Udon Thani","Uthai Thani","Uttaradit","Yala","Yasothon"
       ],
-
-      // Singapore (major regions / planning areas)
       "Singapore": [
         "Central Region","East Region","North Region","North-East Region","West Region",
         "Orchard / CBD","Jurong East","Jurong West","Tampines","Bedok","Ang Mo Kio","Hougang","Sengkang","Yishun","Woodlands",
         "Bukit Merah","Bukit Batok","Bukit Timah","Choa Chu Kang","Clementi","Geylang","Kallang","Marine Parade","Pasir Ris","Toa Payoh"
       ],
-
-      // Malaysia (states + federal territories)
       "Malaysia": [
         "Johor","Kedah","Kelantan","Melaka","Negeri Sembilan","Pahang","Perak","Perlis","Penang (Pulau Pinang)",
         "Sabah","Sarawak","Selangor","Terengganu","Kuala Lumpur (FT)","Labuan (FT)","Putrajaya (FT)"
       ],
-
-      // South Korea (first-level)
       "Korea": [
         "Seoul (서울)","Busan (부산)","Daegu (대구)","Incheon (인천)","Gwangju (광주)","Daejeon (대전)","Ulsan (울산)",
         "Sejong (세종)","Gyeonggi-do (경기도)","Gangwon-do (강원도)","Chungcheongbuk-do (충청북도)","Chungcheongnam-do (충청남도)",
         "Jeollabuk-do (전라북도)","Jeollanam-do (전라남도)","Gyeongsangbuk-do (경상북도)","Gyeongsangnam-do (경상남도)","Jeju-do (제주도)"
       ],
-
-      // Japan (all 47 prefectures)
       "Japan": [
         "Hokkaido","Aomori","Iwate","Miyagi","Akita","Yamagata","Fukushima",
         "Ibaraki","Tochigi","Gunma","Saitama","Chiba","Tokyo","Kanagawa",
@@ -488,7 +532,7 @@ Japan</div>
       const region = document.getElementById('region').value || '-';
       const address = document.getElementById('address').value || '-';
 
-      return `မင်္ဂလာပါ၊ Order တင်လိုပါသည်။\n\n👤 နာမည်: ${name}\n📞 ဖုန်း: ${phone}\n📦 ပစ္စည်း: ${product}\n🌍 နိုင်ငံ: ${country} (${region})\n🏠 လိပ်စာ: ${address}\n\n(ငွေလွှဲ Screenshot ပူးတြဲပေးပို့ပါမည်)`;
+      return `မင်္ဂလာပါ၊ Order တင်လိုပါသည်။\n\n👤 နာမည်: ${name}\n📞 ဖုန်း: ${phone}\n📦 ပစ္စည်း: ${product}\n🌍 နိုင်ငံ: ${country} (${region})\n🏠 လိပ်စာ: ${address}\n\n(ငွေလွှဲ Screenshot ပူးတင်ပေးပါမည်)`;
     }
 
     // Send order via selected app
@@ -506,24 +550,35 @@ Japan</div>
         return;
       }
 
+      let url = "";
+      if(app === 'viber') url = `viber://chat?number=%2B${CONFIG.viberPhone}`;
+      if(app === 'telegram') url = `https://t.me/${CONFIG.telegramUser}`;
+      if(app === 'messenger') url = `https://m.me/${CONFIG.messengerID}`;
+      if(url) {
+        window.location.href = url;
+      }
+    }
+
+    // New: copy order message button handler
+    function copyOrder(){
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      if(!name || !phone){
+        showToast("⚠️ နာမည် နှင့် ဖုန်း အကြောင်း အစဉ်လိုအပ်သည်");
+        return;
+      }
+      const msg = createOrderMsg();
       navigator.clipboard.writeText(msg).then(()=>{
-        showToast("✅ Order စာ Copy ကူးပြီးပါပြီ။ App တွင် Paste ချပါ။");
-        setTimeout(()=>{
-          let url = "";
-          if(app === 'viber') url = `viber://chat?number=%2B${CONFIG.viberPhone}`;
-          if(app === 'telegram') url = `https://t.me/${CONFIG.telegramUser}`;
-          if(app === 'messenger') url = `https://m.me/${CONFIG.messengerID}`;
-          if(url) window.location.href = url;
-        },1300);
+        showToast("✅ Order စာကို copy ပြီးပါပြီ");
       }).catch(()=>{
-        showToast("❗ Copy မအောင်မြင်ပါ။ စာကို manually copy လုပ်ပါ။");
+        showToast("❗ Copy မအောင်မြင်ပါ — စာကို manually copy လုပ်ပါ");
       });
     }
 
     // Copy phone number helper
     function copyToClip(elementId){
       const txt = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(txt).then(()=> showToast("✅ ဖုန်းနံပါတ် Copy ကူးပြီးပါပြီ")).catch(()=> showToast("❗ Copy မအောင်မြင်ပါ"));
+      navigator.clipboard.writeText(txt).then(()=> showToast("✅ ဖုန်းနံပါတ် Copy ပြီးပါပြီ")).catch(()=> showToast("❗ Copy မအောင်မြင်ပါ"));
     }
 
     function showToast(text){
